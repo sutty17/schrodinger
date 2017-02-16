@@ -9,19 +9,11 @@ public class SchrodingerBoolean {
     }
 
     public boolean isTrue() {
-        if((value == null) || (value == Boolean.TRUE)) {
-            return true;
-        } else {
-            return false;
-        }
+        return (value == null) || (value == Boolean.TRUE);
     }
 
     public boolean isFalse() {
-        if((value == null) || (value == Boolean.FALSE)) {
-            return true;
-        } else {
-            return false;
-        }
+        return (value == null) || (value == Boolean.FALSE);
     }
 
     public void set(boolean b) {
