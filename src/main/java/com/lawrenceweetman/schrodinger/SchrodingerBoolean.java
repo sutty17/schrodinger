@@ -1,30 +1,49 @@
 package com.lawrenceweetman.schrodinger;
 
+import java.util.Optional;
+
 public class SchrodingerBoolean {
 
-    private Boolean value;
-
-    public SchrodingerBoolean() {
-        value = null;
+    public static final SchrodingerBoolean CLOSED = new SchrodingerBoolean();
+    public static final SchrodingerBoolean TRUE = new SchrodingerBoolean();
+    static {
+        TRUE.set(true);
+    }
+    public static final SchrodingerBoolean FALSE = new SchrodingerBoolean();
+    static {
+        FALSE.set(false);
     }
 
+    private Optional<Boolean> value = Optional.empty();
+
     public boolean isTrue() {
-        if((value == null) || (value == Boolean.TRUE)) {
-            return true;
-        } else {
-            return false;
-        }
+        return is(Boolean.TRUE);
     }
 
     public boolean isFalse() {
-        if((value == null) || (value == Boolean.FALSE)) {
-            return true;
-        } else {
-            return false;
-        }
+        return is(Boolean.FALSE);
+    }
+
+    public boolean is(boolean b) {
+        return value.orElse(b).equals(b);
     }
 
     public void set(boolean b) {
-        value = Boolean.valueOf(b);
+        value = Optional.of(b);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SchrodingerBoolean that = (SchrodingerBoolean) o;
+
+        return value != null ? value.equals(that.value) : that.value == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return value != null ? value.hashCode() : 0;
     }
 }
