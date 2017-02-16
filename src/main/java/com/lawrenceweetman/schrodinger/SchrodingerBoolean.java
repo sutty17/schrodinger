@@ -9,7 +9,7 @@ public class SchrodingerBoolean {
     }
 
     public boolean isTrue() {
-        if((value == null) || (value == true)) {
+        if((value == null) || (value == Boolean.TRUE)) {
             return true;
         } else {
             return false;
@@ -17,7 +17,7 @@ public class SchrodingerBoolean {
     }
 
     public boolean isFalse() {
-        if((value == null) || (value == false)) {
+        if((value == null) || (value == Boolean.FALSE)) {
             return true;
         } else {
             return false;
@@ -25,6 +25,6 @@ public class SchrodingerBoolean {
     }
 
     public void set(boolean b) {
-        value = b;
+        value = Boolean.valueOf(b);
     }
 }
