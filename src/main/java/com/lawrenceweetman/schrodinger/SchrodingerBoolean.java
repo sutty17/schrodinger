@@ -9,7 +9,7 @@ public class SchrodingerBoolean {
     }
 
     public boolean isTrue() {
-        if(value == null || value == true) {
+        if((value == null) || (value == true)) {
             return true;
         } else {
             return false;
@@ -17,7 +17,7 @@ public class SchrodingerBoolean {
     }
 
     public boolean isFalse() {
-        if(value == null || value == false) {
+        if((value == null) || (value == false)) {
             return true;
         } else {
             return false;
