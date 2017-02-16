@@ -7,11 +7,15 @@ public class SchrodingerBoolean {
     private Optional<Boolean> value = Optional.empty();
 
     public boolean isTrue() {
-        return value.orElse(Boolean.TRUE).equals(Boolean.TRUE);
+        return is(Boolean.TRUE);
     }
 
     public boolean isFalse() {
-        return value.orElse(Boolean.FALSE).equals(Boolean.FALSE);
+        return is(Boolean.FALSE);
+    }
+
+    public boolean is(boolean b) {
+        return value.orElse(b).equals(b);
     }
 
     public void set(boolean b) {

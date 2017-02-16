@@ -49,20 +49,60 @@ public class SchrodingerBooleanTest {
     }
 
     @Test
-    public void testSameObjectIsEqual() throws Exception {
+    public void unsetIsTrue() throws Exception {
+        SchrodingerBoolean schrodingerBoolean = new SchrodingerBoolean();
+        assertTrue(schrodingerBoolean.is(true));
+    }
+
+    @Test
+    public void unsetIsFrue() throws Exception {
+        SchrodingerBoolean schrodingerBoolean = new SchrodingerBoolean();
+        assertTrue(schrodingerBoolean.is(false));
+    }
+
+    @Test
+    public void trueIsTrue() throws Exception {
+        SchrodingerBoolean schrodingerBoolean = new SchrodingerBoolean();
+        schrodingerBoolean.set(true);
+        assertTrue(schrodingerBoolean.is(true));
+    }
+
+    @Test
+    public void trueIsntFalse() throws Exception {
+        SchrodingerBoolean schrodingerBoolean = new SchrodingerBoolean();
+        schrodingerBoolean.set(true);
+        assertFalse(schrodingerBoolean.is(false));
+    }
+
+    @Test
+    public void falseIsntTrue() throws Exception {
+        SchrodingerBoolean schrodingerBoolean = new SchrodingerBoolean();
+        schrodingerBoolean.set(false);
+        assertFalse(schrodingerBoolean.is(true));
+    }
+
+    @Test
+    public void falseIsFalse() throws Exception {
+        SchrodingerBoolean schrodingerBoolean = new SchrodingerBoolean();
+        schrodingerBoolean.set(false);
+        assertTrue(schrodingerBoolean.is(false));
+    }
+
+    @Test
+    public void sameObjectIsEqual() throws Exception {
         SchrodingerBoolean schrodingerBoolean = new SchrodingerBoolean();
         assertTrue(schrodingerBoolean.equals(schrodingerBoolean));
     }
 
     @Test
-    public void testUnsetEqualsOtherUnset() throws Exception {
+    public void unsetEqualsOtherUnset() throws Exception {
         SchrodingerBoolean schrodingerBoolean = new SchrodingerBoolean();
         SchrodingerBoolean otherSchrodingerBoolean = new SchrodingerBoolean();
         assertTrue(schrodingerBoolean.equals(otherSchrodingerBoolean));
     }
 
     @Test
-    public void testUnsetDoesntEqualSetToTrue() throws Exception {
+    public void unsetDoesntEqualSetToTrue() throws Exception {
         SchrodingerBoolean unsetSchrodingerBoolean = new SchrodingerBoolean();
         SchrodingerBoolean trueSchrodingerBoolean = new SchrodingerBoolean();
         trueSchrodingerBoolean.set(true);
@@ -70,7 +110,7 @@ public class SchrodingerBooleanTest {
     }
 
     @Test
-    public void testUnsetDoesntEqualSetToFalse() throws Exception {
+    public void unsetDoesntEqualSetToFalse() throws Exception {
         SchrodingerBoolean unsetSchrodingerBoolean = new SchrodingerBoolean();
         SchrodingerBoolean falseSchrodingerBoolean = new SchrodingerBoolean();
         falseSchrodingerBoolean.set(false);
@@ -78,7 +118,7 @@ public class SchrodingerBooleanTest {
     }
 
     @Test
-    public void testTrueEqualsTrue() throws Exception {
+    public void trueEqualsTrue() throws Exception {
         SchrodingerBoolean schrodingerBoolean = new SchrodingerBoolean();
         schrodingerBoolean.set(true);
         SchrodingerBoolean otherSchrodingerBoolean = new SchrodingerBoolean();
@@ -87,7 +127,7 @@ public class SchrodingerBooleanTest {
     }
 
     @Test
-    public void testFalseEqualsFalse() throws Exception {
+    public void falseEqualsFalse() throws Exception {
         SchrodingerBoolean schrodingerBoolean = new SchrodingerBoolean();
         schrodingerBoolean.set(false);
         SchrodingerBoolean otherSchrodingerBoolean = new SchrodingerBoolean();
@@ -96,7 +136,7 @@ public class SchrodingerBooleanTest {
     }
 
     @Test
-    public void testFalseDoesntEqualTrue() throws Exception {
+    public void falseDoesntEqualTrue() throws Exception {
         SchrodingerBoolean falseSchrodingerBoolean = new SchrodingerBoolean();
         falseSchrodingerBoolean.set(false);
         SchrodingerBoolean trueSchrodingerBoolean = new SchrodingerBoolean();
