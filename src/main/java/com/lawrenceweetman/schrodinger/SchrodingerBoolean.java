@@ -1,22 +1,20 @@
 package com.lawrenceweetman.schrodinger;
 
+import java.util.Optional;
+
 public class SchrodingerBoolean {
 
-    private Boolean value;
-
-    public SchrodingerBoolean() {
-        value = null;
-    }
+    private Optional<Boolean> value = Optional.empty();
 
     public boolean isTrue() {
-        return (value == null) || (value == Boolean.TRUE);
+        return value.orElse(Boolean.TRUE).equals(Boolean.TRUE);
     }
 
     public boolean isFalse() {
-        return (value == null) || (value == Boolean.FALSE);
+        return value.orElse(Boolean.FALSE).equals(Boolean.FALSE);
     }
 
     public void set(boolean b) {
-        value = Boolean.valueOf(b);
+        value = Optional.of(b);
     }
 }
